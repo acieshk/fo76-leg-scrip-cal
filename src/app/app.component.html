@@ -1,0 +1,33 @@
+<!--The content below is only a placeholder and can be replaced.-->
+
+Enter Scrips
+<input type="number" [(ngModel)]="scrips" (change)="change()"/>
+
+<table>
+  <th>
+    <tr>
+      <td>Legendary Items</td>
+      <td>Scrips</td>
+    </tr>
+  </th>
+  <tbody>
+    <tr *ngFor="let row of data">
+      <td>
+        {{row.name}}
+      </td>
+      <td>
+        {{row.scrip}}
+      </td>
+    </tr>
+  </tbody>
+</table>
+Total Result: {{result.length}}
+<div class="result-block" *ngFor="let r of result">
+  <div *ngFor="let row of data; let i = index">
+    <div *ngIf="r[i] > 0">
+      {{row.name}} x {{r[i] | json}}
+    </div>
+  </div>
+  Legendary items needed: {{sum(r)}}
+</div>
+<router-outlet></router-outlet>
