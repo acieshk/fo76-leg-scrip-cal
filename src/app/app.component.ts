@@ -7,31 +7,33 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'fo76-legendary-scrip-calculator';
+  maxScrip:number = 150;
   scrips:number = 150;
   result = []
+  displayedColumns:string[] = ['name', 'scrip']
   data:any = [
     {
-      name: 'legendary armor 1',
+      name: 'Legendary armor 1',
       scrip: 3
     },
     {
-      name: 'legendary armor 2',
+      name: 'Legendary armor 2',
       scrip: 9
     },
     {
-      name: 'legendary armor 3',
+      name: 'Legendary armor 3',
       scrip: 24
     },
     {
-      name: 'legendary weapon 1',
+      name: 'Legendary weapon 1',
       scrip: 5
     },
     {
-      name: 'legendary weapon 2',
+      name: 'Legendary weapon 2',
       scrip: 15
     },
     {
-      name: 'legendary weapon 3',
+      name: 'Legendary weapon 3',
       scrip: 40
     },
   ]
@@ -39,7 +41,7 @@ export class AppComponent {
     this.change()
   }
   change() {
-    console.log('change')
+    if (this.scrips > this.maxScrip) return;
     let s = this.scrips
     this.result = [];
     for (let a = 0; this.data[0].scrip * a <= s;a++) {
@@ -89,17 +91,4 @@ export class AppComponent {
     })
     return sum;
   }
-  // calc(scrips:number, input:any[], data:any[]):any[] {
-  //   var obj = data[0]
-  //   var arr = []
-  //   for(let i = 1; obj.scrip * i <= scrips;i++) {
-  //     let t = {
-  //       times: t,
-  //       obj: obj
-  //     }
-  //     arr.push(t)
-  //   }
-  //   return arr;
-  // }
-
 }

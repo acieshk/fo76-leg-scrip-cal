@@ -1,33 +1,43 @@
-<!--The content below is only a placeholder and can be replaced.-->
+<mat-toolbar class="header" color="primary">
+  <span>Legendary scrip calculator for Fallout 76</span>
+</mat-toolbar>
+<mat-toolbar></mat-toolbar>
 
-Enter Scrips
-<input type="number" [(ngModel)]="scrips" (change)="change()"/>
-
-<table>
-  <th>
-    <tr>
-      <td>Legendary Items</td>
-      <td>Scrips</td>
-    </tr>
-  </th>
-  <tbody>
-    <tr *ngFor="let row of data">
-      <td>
-        {{row.name}}
-      </td>
-      <td>
-        {{row.scrip}}
-      </td>
-    </tr>
-  </tbody>
+<table mat-table [dataSource]="data" class="mat-elevation-z8">
+  <ng-container matColumnDef="name">
+    <th mat-header-cell *matHeaderCellDef> <span class="table-header">Item</span> </th>
+    <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+  </ng-container>
+  <ng-container matColumnDef="scrip">
+    <th mat-header-cell *matHeaderCellDef> <span class="table-header">Scrips</span> </th>
+    <td mat-cell *matCellDef="let element"> {{element.scrip}} </td>
+  </ng-container>
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;">
+  <!-- <ng-container matColumnDef="You have...">
+    <th mat-header-cell *matHeaderCellDef> No. </th>
+    <td mat-cell *matCellDef="let element"> {{element.position}} </td>
+  </ng-container> -->
 </table>
-Total Result: {{result.length}}
-<div class="result-block" *ngFor="let r of result">
-  <div *ngFor="let row of data; let i = index">
-    <div *ngIf="r[i] > 0">
-      {{row.name}} x {{r[i] | json}}
-    </div>
-  </div>
-  Legendary items needed: {{sum(r)}}
+<div class="center">
+  <mat-form-field class="example-full-width">
+      <input matInput type="number" placeholder="Number of Scrips" [(ngModel)]="scrips" (change)="change()" [max]="maxScrip">
+  </mat-form-field>
+  Total Result: {{result.length}}
 </div>
+<div class="grid">
+  <mat-card *ngFor="let r of result">
+    <mat-card-content>
+    <div *ngFor="let row of data; let i = index">
+      <div *ngIf="r[i] > 0">
+        {{row.name}} x {{r[i] | json}}
+      </div>
+    </div>
+      Legendary items needed: {{sum(r)}}
+    </mat-card-content>
+  </mat-card>
+</div>
+<!-- <div class="result-block" *ngFor="let r of result">
+
+</div> -->
 <router-outlet></router-outlet>

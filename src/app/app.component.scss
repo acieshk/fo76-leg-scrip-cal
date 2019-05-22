@@ -1,3 +1,36 @@
+@import 'src/styles.scss';
+
+.header {
+  font-weight: 700;
+  position: fixed;
+  z-index: 1;
+}
+.center {
+  width: 600px;
+  margin: 0 auto;
+  display:flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+table {
+  width: 100%;
+  max-width: 600px;
+  margin:0 auto;
+  box-shadow: 0;
+  .table-header {
+    font-weight: 700;
+  }
+}
+.grid {
+  max-width: 1150px;
+  margin: 0 auto;
+  mat-card {
+    width: 250px;
+    height: 300px;
+    display:inline-grid;
+  }
+}
+
 .result-block {
   border: 1px solid #AAA;
   border-bottom: 0px;
