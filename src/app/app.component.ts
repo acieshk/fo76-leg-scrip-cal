@@ -63,9 +63,9 @@ export class AppComponent {
     },
   ]
   ngOnInit() {
-    this.change().then(()=>{
-      this.hideResult = false;
-    })
+    // this.change().then(()=>{
+    //   this.hideResult = false;
+    // })
   }
   detechScripChange() {
     if (this.scrips > this.maxScrip) {
