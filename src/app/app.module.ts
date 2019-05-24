@@ -11,10 +11,12 @@ import { MatInputModule } from '@angular/material/input';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTableModule } from '@angular/material/table';
 import {MatCardModule} from '@angular/material/card';
-
+import { ItemComponent } from './item/item.component';
+import {MatIconModule} from '@angular/material/icon';
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    ItemComponent
   ],
   imports: [
     BrowserModule,
@@ -24,7 +26,8 @@ import {MatCardModule} from '@angular/material/card';
     MatInputModule,
     MatToolbarModule,
     MatTableModule,
-    MatCardModule
+    MatCardModule,
+    MatIconModule
   ],
   providers: [],
   bootstrap: [AppComponent]

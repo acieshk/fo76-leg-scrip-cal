@@ -3,7 +3,10 @@
 .header {
   font-weight: 700;
   position: fixed;
+  background: $blue2;
+  color: $yellow-light;
   z-index: 1;
+  border-bottom: 3px solid $yellow-light;
 }
 .center {
   width: 600px;
@@ -20,14 +23,23 @@ table {
   .table-header {
     font-weight: 700;
   }
+
+}
+.flex {
+  display: flex;
+  align-items: center;
 }
 .grid {
   max-width: 1150px;
   margin: 0 auto;
   mat-card {
-    width: 250px;
+    width: 230px;
+    margin: 10px;
     height: 300px;
     display:inline-grid;
+    .times {
+      font-size: 30px;
+    }
   }
 }
 

@@ -10,38 +10,70 @@ export class AppComponent {
   maxScrip:number = 150;
   scrips:number = 150;
   result = []
+  hideResult = true;
   displayedColumns:string[] = ['name', 'scrip']
+  itemColor = [
+    'brown',
+    'orange',
+    'violet'
+  ]
   data:any = [
     {
-      name: 'Legendary armor 1',
+      name: 'Legendary armor',
+      type: 'armor',
+      stars: 1,
       scrip: 3
     },
     {
-      name: 'Legendary armor 2',
+      name: 'Legendary armor',
+      type: 'armor',
+      stars: 2,
       scrip: 9
     },
     {
-      name: 'Legendary armor 3',
+      name: 'Legendary armor',
+      type: 'armor',
+      stars: 3,
       scrip: 24
     },
     {
-      name: 'Legendary weapon 1',
+      name: 'Legendary weapon',
+      type: 'weapon',
+      stars: 1,
       scrip: 5
     },
     {
-      name: 'Legendary weapon 2',
+      name: 'Legendary weapon',
+      type: 'weapon',
+      stars: 2,
       scrip: 15
     },
     {
-      name: 'Legendary weapon 3',
+      name: 'Legendary weapon',
+      type: 'weapon',
+      stars: 3,
       scrip: 40
     },
   ]
   ngOnInit() {
-    this.change()
+    this.change().then(()=>{
+      this.hideResult = false;
+    })
   }
-  change() {
-    if (this.scrips > this.maxScrip) return;
+  detechScripChange() {
+    if (this.scrips > this.maxScrip) {
+      this.scrips = this.maxScrip;
+    } else if (this.scrips < 0) {
+      this.scrips = 0;
+    }
+    this.hideResult = true
+    this.change().then(()=>{
+      this.hideResult = false;
+    })
+  }
+  async change() {
+    this.hideResult = true;
+
     let s = this.scrips
     this.result = [];
     for (let a = 0; this.data[0].scrip * a <= s;a++) {

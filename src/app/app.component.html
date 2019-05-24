@@ -1,4 +1,4 @@
-<mat-toolbar class="header" color="primary">
+<mat-toolbar class="header">
   <span>Legendary scrip calculator for Fallout 76</span>
 </mat-toolbar>
 <mat-toolbar></mat-toolbar>
@@ -6,7 +6,12 @@
 <table mat-table [dataSource]="data" class="mat-elevation-z8">
   <ng-container matColumnDef="name">
     <th mat-header-cell *matHeaderCellDef> <span class="table-header">Item</span> </th>
-    <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+    <td mat-cell *matCellDef="let element">
+        <div class="flex">
+         <span>{{element.name}}</span>
+         <app-item [type]="element.type" [star]="element.stars"></app-item>
+        </div>
+     </td>
   </ng-container>
   <ng-container matColumnDef="scrip">
     <th mat-header-cell *matHeaderCellDef> <span class="table-header">Scrips</span> </th>
@@ -14,24 +19,23 @@
   </ng-container>
   <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
   <tr mat-row *matRowDef="let row; columns: displayedColumns;">
-  <!-- <ng-container matColumnDef="You have...">
-    <th mat-header-cell *matHeaderCellDef> No. </th>
-    <td mat-cell *matCellDef="let element"> {{element.position}} </td>
-  </ng-container> -->
 </table>
+<app-item></app-item>
 <div class="center">
   <mat-form-field class="example-full-width">
-      <input matInput type="number" placeholder="Number of Scrips" [(ngModel)]="scrips" (change)="change()" [max]="maxScrip">
+      <input matInput type="number" placeholder="Number of Scrips" [(ngModel)]="scrips" (change)="detechScripChange()" [max]="maxScrip">
   </mat-form-field>
   Total Result: {{result.length}}
 </div>
-<div class="grid">
+<div class="grid" *ngIf="!hideResult">
   <mat-card *ngFor="let r of result">
     <mat-card-content>
     <div *ngFor="let row of data; let i = index">
-      <div *ngIf="r[i] > 0">
-        {{row.name}} x {{r[i] | json}}
+      <div class="flex" *ngIf="r[i] > 0">
+        <app-item [type]="row.type" [star]="row.stars"></app-item>
+        <span class="times">x {{r[i] | json}}</span>
       </div>
+
     </div>
       Legendary items needed: {{sum(r)}}
     </mat-card-content>
