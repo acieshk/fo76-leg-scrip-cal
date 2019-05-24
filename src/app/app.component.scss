@@ -32,9 +32,13 @@ table {
   display: flex;
   align-items: center;
 }
+.space-between {
+  justify-content: space-between;
+}
 .grid {
   max-width: 1150px;
   margin: 0 auto;
+  font-size: 30px;
   mat-card {
     width: 230px;
     margin: 10px;
@@ -42,6 +46,13 @@ table {
     display:inline-grid;
     .times {
       font-size: 30px;
+    }
+    .need {
+      font-size: 30px;
+      color: red;
+    }
+    .ok {
+      color: green;
     }
   }
 }

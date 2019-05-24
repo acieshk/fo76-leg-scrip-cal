@@ -81,6 +81,29 @@ export class AppComponent {
       this.hideResult = false;
     })
   }
+  need(ihave:number, need:number):number {
+    if (ihave > need) return 0;
+    return need - ihave;
+  }
+  ihave(r:any[]) {
+    let sum=0;
+    sum+= r[0]>this.data[0].have?r[0]-this.data[0].have:0;
+    sum+= r[1]>this.data[1].have?r[1]-this.data[1].have:0;
+    sum+= r[2]>this.data[2].have?r[2]-this.data[2].have:0;
+    sum+= r[3]>this.data[3].have?r[3]-this.data[3].have:0;
+    sum+= r[4]>this.data[4].have?r[4]-this.data[4].have:0;
+    sum+= r[5]>this.data[5].have?r[5]-this.data[5].have:0;
+    return sum;
+  }
+  resort() {
+    this.result.sort((a,b)=> {
+      if (this.ihave(a) !== this.ihave(b))
+        return this.ihave(a) - this.ihave(b);
+      else
+        return this.sum(a) - this.sum(b);
+    })
+  }
+
   async change(scrips:number):Promise<any[]> {
     return new Promise((resolve)=>{
       let result = []

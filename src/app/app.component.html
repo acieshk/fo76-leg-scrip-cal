@@ -2,7 +2,15 @@
   <span>Legendary scrip calculator for Fallout 76</span>
 </mat-toolbar>
 <mat-toolbar></mat-toolbar>
-
+<!-- <div>
+  Enter the number of scrips you have and the best strategy will be calculated.
+</div> -->
+<div class="center">
+  <mat-form-field class="example-full-width">
+      <input matInput type="number" placeholder="Number of Scrips" [(ngModel)]="scrips" (change)="detechScripChange()" [max]="maxScrip">
+  </mat-form-field>
+  Possible combinations: {{result.length}}
+</div>
 <table mat-table [dataSource]="data" class="mat-elevation-z8">
   <ng-container matColumnDef="name">
     <th mat-header-cell *matHeaderCellDef> <span class="table-header">Item</span> </th>
@@ -25,32 +33,39 @@
      </th>
     <td mat-cell *matCellDef="let element">
       <mat-form-field class="have-field">
-        <input matInput [disabled]="!haveColumn" [(ngModel)]="element.have" type="number" min="0" [max]="maxScrip" />
+        <input matInput (change)="resort()" [disabled]="!haveColumn" [(ngModel)]="element.have" type="number" min="0" [max]="maxScrip" />
       </mat-form-field>
     </td>
   </ng-container>
   <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
   <tr mat-row *matRowDef="let row; columns: displayedColumns;">
 </table>
-<app-item></app-item>
-<div class="center">
-  <mat-form-field class="example-full-width">
-      <input matInput type="number" placeholder="Number of Scrips" [(ngModel)]="scrips" (change)="detechScripChange()" [max]="maxScrip">
-  </mat-form-field>
-  Total Result: {{result.length}}
-</div>
+
 <div class="grid" *ngIf="!hideResult">
   <mat-card *ngFor="let r of result">
     <mat-card-content>
     <div *ngFor="let row of data; let i = index">
-      <div class="flex" *ngIf="r[i] > 0">
+      <div class="flex space-between" *ngIf="r[i] > 0">
         <app-item [type]="row.type" [star]="row.stars"></app-item>
-        <span class="times">x {{r[i] | json}}</span>
-        <span *ngIf="haveColumn">-<span>{{row.have - r[i]}}</span></span>
+        <span>
+          <span class="times">x {{r[i] | json}}</span>
+          <span *ngIf="haveColumn && need(row.have,r[i]) !== 0" class="need">-<span>{{need(row.have,r[i])}}</span></span>
+          <span *ngIf="haveColumn && need(row.have,r[i]) == 0" class="ok">
+            <i class="material-icons ok">done</i>
+          </span>
+        </span>
       </div>
 
     </div>
+    <div>
       Legendary items needed: {{sum(r)}}
+    </div>
+    <div>
+      You have:  {{sum(r) - ihave(r)}}/{{sum(r)}}
+    </div>
+    <div>
+      You need: {{ihave(r)}} more
+    </div>
     </mat-card-content>
   </mat-card>
 </div>
