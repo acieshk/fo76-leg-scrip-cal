@@ -84,7 +84,7 @@ export class AppComponent {
     })
   }
   async change():Promise<any[]> {
-    return new Promise((resolve, reject)=>{
+    return new Promise((resolve)=>{
       let s = this.scrips
       let result = []
       for (let a = 0; this.data[0].scrip * a <= s;a++) {
