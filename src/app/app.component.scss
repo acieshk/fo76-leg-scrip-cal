@@ -9,7 +9,7 @@
   border-bottom: 3px solid $yellow-light;
 }
 .center {
-  width: 600px;
+  max-width: 600px;
   margin: 0 auto;
   display:flex;
   justify-content: space-between;
