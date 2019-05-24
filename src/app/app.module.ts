@@ -30,7 +30,8 @@ import {MatButtonModule} from '@angular/material/button';
     MatTableModule,
     MatCardModule,
     MatIconModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+    MatButtonModule
   ],
   providers: [],
   bootstrap: [AppComponent]

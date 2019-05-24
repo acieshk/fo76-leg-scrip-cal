@@ -64,7 +64,11 @@ export class AppComponent {
     },
   ]
   ngOnInit() {
-
+    this.change(this.scrips).then(r=>{
+      this.limiter = 24
+      this.result = r
+      this.hideResult = false
+    })
   }
   showMore() {
     this.limiter += 24;
@@ -81,7 +85,7 @@ export class AppComponent {
     this.change(this.scrips).then(r=>{
       this.limiter = 24
       console.timeEnd('performance')
-      // console.log(result)
+
       this.result = r
       this.hideResult = false
     })
