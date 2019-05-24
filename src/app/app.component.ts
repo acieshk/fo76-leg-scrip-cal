@@ -13,6 +13,7 @@ export class AppComponent {
   hideResult:boolean = true;
   haveColumn:boolean = false;
   displayedColumns:string[] = ['name', 'scrip', 'ihave']
+  limiter:number = 24;
   itemColor = [
     'brown',
     'orange',
@@ -65,6 +66,9 @@ export class AppComponent {
   ngOnInit() {
 
   }
+  showMore() {
+    this.limiter += 24;
+  }
   detechScripChange() {
     if (this.scrips > this.maxScrip) {
       this.scrips = this.maxScrip;
@@ -75,10 +79,11 @@ export class AppComponent {
     this.result = []
     console.time('performance')
     this.change(this.scrips).then(r=>{
+      this.limiter = 24
       console.timeEnd('performance')
       // console.log(result)
       this.result = r
-      this.hideResult = false;
+      this.hideResult = false
     })
   }
   need(ihave:number, need:number):number {

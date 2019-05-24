@@ -42,7 +42,7 @@
 </table>
 
 <div class="grid" *ngIf="!hideResult">
-  <mat-card *ngFor="let r of result">
+  <mat-card *ngFor="let r of result | slice:0:limiter">
     <mat-card-content>
     <div *ngFor="let row of data; let i = index">
       <div class="flex space-between" *ngIf="r[i] > 0">
@@ -68,6 +68,9 @@
     </div>
     </mat-card-content>
   </mat-card>
+  <div *ngIf="limiter < result.length">
+    <button class="showMore" mat-raised-button color="primary" (click)="showMore()">Show More</button>
+  </div>
 </div>
 <!-- <div class="result-block" *ngFor="let r of result">
 

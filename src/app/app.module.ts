@@ -14,6 +14,7 @@ import {MatCardModule} from '@angular/material/card';
 import { ItemComponent } from './item/item.component';
 import {MatIconModule} from '@angular/material/icon';
 import {MatCheckboxModule} from '@angular/material/checkbox';
+import {MatButtonModule} from '@angular/material/button';
 @NgModule({
   declarations: [
     AppComponent,
