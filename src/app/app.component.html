@@ -62,14 +62,17 @@
       </div>
 
     </div>
-    <div>
-      Legendary items needed: {{sum(r)}}
-    </div>
-    <div>
-      You have:  {{sum(r) - ihave(r)}}/{{sum(r)}}
-    </div>
-    <div>
-      You need: {{ihave(r)}} more
+    <div class="bottom">
+
+      <div>
+        Legendary items needed: {{sum(r)}}
+      </div>
+      <div>
+        You have:  {{sum(r) - ihave(r)}}/{{sum(r)}}
+      </div>
+      <div>
+        You need: {{ihave(r)}} more
+      </div>
     </div>
     </mat-card-content>
   </mat-card>

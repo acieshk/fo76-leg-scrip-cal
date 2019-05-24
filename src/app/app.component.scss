@@ -47,17 +47,26 @@ table {
   margin: 0 auto;
   font-size: 30px;
   mat-card {
+    align-self: center;
+    justify-self: center;
     width: 200px;
     min-width: 200px;
     max-width: 35%;
     margin: 6px;
     height: 300px;
     display:inline-grid;
+    position: relative;
+    .bottom {
+      position:absolute;
+      bottom: 15px;
+      left: 5px;
+      right: 5px;
+    }
     .times {
-      font-size: 30px;
+      font-size: 26px;
     }
     .need {
-      font-size: 30px;
+      font-size: 26px;
       color: red;
     }
     .ok {
