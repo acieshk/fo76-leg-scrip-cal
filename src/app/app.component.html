@@ -17,6 +17,18 @@
     <th mat-header-cell *matHeaderCellDef> <span class="table-header">Scrips</span> </th>
     <td mat-cell *matCellDef="let element"> {{element.scrip}} </td>
   </ng-container>
+  <ng-container matColumnDef="ihave">
+    <th mat-header-cell *matHeaderCellDef>
+      <mat-checkbox [(ngModel)]="haveColumn">
+        <span class="table-header">I have</span>
+      </mat-checkbox>
+     </th>
+    <td mat-cell *matCellDef="let element">
+      <mat-form-field class="have-field">
+        <input matInput [disabled]="!haveColumn" [(ngModel)]="element.have" type="number" min="0" [max]="maxScrip" />
+      </mat-form-field>
+    </td>
+  </ng-container>
   <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
   <tr mat-row *matRowDef="let row; columns: displayedColumns;">
 </table>

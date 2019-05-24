@@ -13,6 +13,7 @@ import { MatTableModule } from '@angular/material/table';
 import {MatCardModule} from '@angular/material/card';
 import { ItemComponent } from './item/item.component';
 import {MatIconModule} from '@angular/material/icon';
+import {MatCheckboxModule} from '@angular/material/checkbox';
 @NgModule({
   declarations: [
     AppComponent,
@@ -27,7 +28,8 @@ import {MatIconModule} from '@angular/material/icon';
     MatToolbarModule,
     MatTableModule,
     MatCardModule,
-    MatIconModule
+    MatIconModule,
+    MatCheckboxModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -9,9 +9,10 @@ export class AppComponent {
   title = 'fo76-legendary-scrip-calculator';
   maxScrip:number = 150;
   scrips:number = 150;
-  result = []
-  hideResult = true;
-  displayedColumns:string[] = ['name', 'scrip']
+  result:any[] = []
+  hideResult:boolean = true;
+  haveColumn:boolean = false;
+  displayedColumns:string[] = ['name', 'scrip', 'ihave']
   itemColor = [
     'brown',
     'orange',
@@ -22,37 +23,43 @@ export class AppComponent {
       name: 'Legendary armor',
       type: 'armor',
       stars: 1,
-      scrip: 3
+      scrip: 3,
+      have: 0
     },
     {
       name: 'Legendary armor',
       type: 'armor',
       stars: 2,
-      scrip: 9
+      scrip: 9,
+      have: 0
     },
     {
       name: 'Legendary armor',
       type: 'armor',
       stars: 3,
-      scrip: 24
+      scrip: 24,
+      have: 0
     },
     {
       name: 'Legendary weapon',
       type: 'weapon',
       stars: 1,
-      scrip: 5
+      scrip: 5,
+      have: 0
     },
     {
       name: 'Legendary weapon',
       type: 'weapon',
       stars: 2,
-      scrip: 15
+      scrip: 15,
+      have: 0
     },
     {
       name: 'Legendary weapon',
       type: 'weapon',
       stars: 3,
-      scrip: 40
+      scrip: 40,
+      have: 0
     },
   ]
   ngOnInit() {
