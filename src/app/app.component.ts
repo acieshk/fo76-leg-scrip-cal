@@ -74,40 +74,45 @@ export class AppComponent {
       this.scrips = 0;
     }
     this.hideResult = true
-    this.change().then(()=>{
+    this.result = []
+    console.time('performance')
+    this.change().then(r=>{
+      console.timeEnd('performance')
+      // console.log(result)
+      this.result = r
       this.hideResult = false;
     })
   }
-  async change() {
-    this.hideResult = true;
-
-    let s = this.scrips
-    this.result = [];
-    for (let a = 0; this.data[0].scrip * a <= s;a++) {
-      let aArr = [a,0,0,0,0,0]
-      let aScips = s - this.data[0].scrip * a;
-      if (aScips == 0) this.result.push(aArr);
-      else {
-        for (let b = 0; this.data[1].scrip * b <= aScips; b++) {
-          let bArr = [a,b,0,0,0,0]
-          let bScrips = aScips - this.data[1].scrip * b
-          if (bScrips == 0) this.result.push(bArr); else {
-            for (let c = 0; this.data[2].scrip * c <= bScrips;c++) {
-              let cArr = [a,b,c,0,0,0]
-              let cScrips = bScrips - this.data[2].scrip * c
-              if (cScrips == 0) this.result.push(cArr); else {
-                for (let d = 0; this.data[3].scrip * d <= cScrips;d++) {
-                  let dArr = [a,b,c,d,0,0]
-                  let dScrips = cScrips - this.data[3].scrip * d
-                  if (dScrips == 0) this.result.push(dArr); else {
-                    for (let e = 0; this.data[4].scrip * e <= dScrips;e++) {
-                      let eArr = [a,b,c,d,e,0]
-                      let eScrips = dScrips - this.data[4].scrip * e
-                      if (eScrips == 0) this.result.push(eArr); else {
-                        for (let f = 0; this.data[5].scrip * f <= eScrips; f++) {
-                          let fArr = [a,b,c,d,e,f]
-                          let fScrips = eScrips - this.data[5].scrip * f
-                          if (fScrips == 0) this.result.push(fArr);
+  async change():Promise<any[]> {
+    return new Promise((resolve, reject)=>{
+      let s = this.scrips
+      let result = []
+      for (let a = 0; this.data[0].scrip * a <= s;a++) {
+        let aArr = [a,0,0,0,0,0]
+        let aScrips = s - this.data[0].scrip * a;
+        if (aScrips == 0) result.push(aArr);
+        else {
+          for (let b = 0; this.data[1].scrip * b <= aScrips; b++) {
+            let bArr = [a,b,0,0,0,0]
+            let bScrips = aScrips - this.data[1].scrip * b
+            if (bScrips == 0) result.push(bArr); else {
+              for (let c = 0; this.data[2].scrip * c <= bScrips;c++) {
+                let cArr = [a,b,c,0,0,0]
+                let cScrips = bScrips - this.data[2].scrip * c
+                if (cScrips == 0) result.push(cArr); else {
+                  for (let d = 0; this.data[3].scrip * d <= cScrips;d++) {
+                    let dArr = [a,b,c,d,0,0]
+                    let dScrips = cScrips - this.data[3].scrip * d
+                    if (dScrips == 0) result.push(dArr); else {
+                      for (let e = 0; this.data[4].scrip * e <= dScrips;e++) {
+                        let eArr = [a,b,c,d,e,0]
+                        let eScrips = dScrips - this.data[4].scrip * e
+                        if (eScrips == 0) result.push(eArr); else {
+                          for (let f = 0; this.data[5].scrip * f <= eScrips; f++) {
+                            let fArr = [a,b,c,d,e,f]
+                            let fScrips = eScrips - this.data[5].scrip * f
+                            if (fScrips == 0) result.push(fArr);
+                          }
                         }
                       }
                     }
@@ -118,9 +123,10 @@ export class AppComponent {
           }
         }
       }
-    }
-    this.result.sort((a,b)=> {
-      return this.sum(a) - this.sum(b);
+      result.sort((a,b)=> {
+        return this.sum(a) - this.sum(b);
+      })
+      resolve(result)
     })
   }
   sum(arr:number[]):number {
