@@ -63,9 +63,7 @@ export class AppComponent {
     },
   ]
   ngOnInit() {
-    // this.change().then(()=>{
-    //   this.hideResult = false;
-    // })
+
   }
   detechScripChange() {
     if (this.scrips > this.maxScrip) {
@@ -76,20 +74,19 @@ export class AppComponent {
     this.hideResult = true
     this.result = []
     console.time('performance')
-    this.change().then(r=>{
+    this.change(this.scrips).then(r=>{
       console.timeEnd('performance')
       // console.log(result)
       this.result = r
       this.hideResult = false;
     })
   }
-  async change():Promise<any[]> {
+  async change(scrips:number):Promise<any[]> {
     return new Promise((resolve)=>{
-      let s = this.scrips
       let result = []
-      for (let a = 0; this.data[0].scrip * a <= s;a++) {
+      for (let a = 0; this.data[0].scrip * a <= scrips;a++) {
         let aArr = [a,0,0,0,0,0]
-        let aScrips = s - this.data[0].scrip * a;
+        let aScrips = scrips - this.data[0].scrip * a;
         if (aScrips == 0) result.push(aArr);
         else {
           for (let b = 0; this.data[1].scrip * b <= aScrips; b++) {

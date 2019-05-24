@@ -3,8 +3,9 @@ const express = require('express');
 const path = require('path');
 
 const app = express();
-
+var compression = require('compression')
 // Serve only the static files form the dist directory
+app.use(compression())
 app.use(express.static(__dirname + '/dist/fo76-legendary-scrip-calculator'));
 
 app.get('/*', function(req,res) {
