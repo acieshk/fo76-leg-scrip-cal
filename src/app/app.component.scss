@@ -47,9 +47,10 @@ table {
   margin: 0 auto;
   font-size: 30px;
   mat-card {
-    width: 230px;
+    width: 200px;
+    min-width: 200px;
     max-width: 35%;
-    margin: 10px;
+    margin: 6px;
     height: 300px;
     display:inline-grid;
     .times {
