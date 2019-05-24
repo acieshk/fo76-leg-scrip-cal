@@ -46,6 +46,7 @@
       <div class="flex" *ngIf="r[i] > 0">
         <app-item [type]="row.type" [star]="row.stars"></app-item>
         <span class="times">x {{r[i] | json}}</span>
+        <span *ngIf="haveColumn">-<span>{{row.have - r[i]}}</span></span>
       </div>
 
     </div>
