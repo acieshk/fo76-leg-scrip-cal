@@ -15,10 +15,13 @@ import { ItemComponent } from './item/item.component';
 import {MatIconModule} from '@angular/material/icon';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatButtonModule} from '@angular/material/button';
+
+import { AutofocusDirective } from './autofocus.directive'
 @NgModule({
   declarations: [
     AppComponent,
-    ItemComponent
+    ItemComponent,
+    AutofocusDirective
   ],
   imports: [
     BrowserModule,
