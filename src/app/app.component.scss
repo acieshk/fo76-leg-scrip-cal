@@ -112,11 +112,12 @@ table {
       color: green;
     }
   }
-  .showMore{
-    width: 100%;
-  }
 }
-
+.showMore{
+  width: 100%;
+  max-width: 1150px;
+  margin: 0 auto;
+}
 .result-block {
   border: 1px solid #AAA;
   border-bottom: 0px;

@@ -77,11 +77,8 @@
     </div>
     </mat-card-content>
   </mat-card>
-  <div *ngIf="limiter < result.length">
-    <button class="showMore" mat-raised-button color="primary" (click)="showMore()">Show More</button>
-  </div>
 </div>
-<!-- <div class="result-block" *ngFor="let r of result">
-
-</div> -->
+<div *ngIf="limiter < result.length">
+  <button class="showMore" mat-raised-button color="primary" (click)="showMore()">Show More</button>
+</div>
 <router-outlet></router-outlet>
