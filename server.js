@@ -15,7 +15,7 @@ app.use(
   }
 ));
 
-app.get('/*', function(req,res) {
+app.get('/fo76Scrip/', function(req,res) {
 
 res.sendFile(path.join(__dirname+'/dist/fo76-legendary-scrip-calculator/index.html'));
 });
