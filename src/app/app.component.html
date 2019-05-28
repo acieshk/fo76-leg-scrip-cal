@@ -37,8 +37,12 @@
       </mat-checkbox>
      </th>
     <td mat-cell *matCellDef="let element">
-      <mat-form-field class="have-field">
+      <mat-form-field class="have-field" *ngIf="haveColumn">
         <input matInput (change)="resort()" [disabled]="!haveColumn" [(ngModel)]="element.have"
+        type="number" min="0" [max]="maxScrip" />
+      </mat-form-field>
+      <mat-form-field class="have-field" *ngIf="!haveColumn">
+        <input matInput (click)="haveColumn = true" (change)="resort()" [disabled]="!haveColumn" [(ngModel)]="element.have"
         type="number" min="0" [max]="maxScrip" />
       </mat-form-field>
     </td>
