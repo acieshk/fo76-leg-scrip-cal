@@ -1,0 +1,14 @@
+{
+  "steps:" [
+    {
+      "name": "gcr.io/cloud-builders/npm",
+      "args": [
+        "build",
+        "-t",
+        "gcr.io/fo76scripcalculator",
+        "."
+      ],
+      "timeout":"500s"
+    }
+  ]
+}
