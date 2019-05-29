@@ -64,11 +64,22 @@ export class AppComponent {
     },
   ]
   ngOnInit() {
+    this.loadFromlocalStorage()
     this.change(this.scrips).then(r=>{
       this.limiter = 24
       this.result = r
       this.hideResult = false
     })
+  }
+  loadFromlocalStorage() {
+    let s = localStorage.getItem('setting');
+    if (s) {
+      let d = JSON.parse(s);
+      this.haveColumn = d.haveColumn;
+      d.have.forEach((h, i)=> {
+        this.data[i].have = h
+      })
+    }
   }
   saveToLocalStorage() {
     let h:number[] = []
