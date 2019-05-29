@@ -32,10 +32,10 @@
   </ng-container>
   <ng-container matColumnDef="ihave">
     <th mat-header-cell *matHeaderCellDef>
-      <mat-checkbox [(ngModel)]="haveColumn">
+      <mat-checkbox [(ngModel)]="haveColumn" (change)="saveToLocalStorage()">
         <span class="table-header">I have</span>
       </mat-checkbox>
-     </th> 
+     </th>
     <td mat-cell *matCellDef="let element">
       <mat-form-field class="have-field" *ngIf="haveColumn">
         <input matInput (change)="resort()" [disabled]="!haveColumn" [(ngModel)]="element.have"

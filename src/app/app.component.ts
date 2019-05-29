@@ -19,7 +19,7 @@ export class AppComponent {
     'orange',
     'violet'
   ]
-  data:any = [
+  data:any[] = [
     {
       name: 'Legendary armor',
       type: 'armor',
@@ -70,6 +70,18 @@ export class AppComponent {
       this.hideResult = false
     })
   }
+  saveToLocalStorage() {
+    let h:number[] = []
+    this.data.forEach(d=>{
+      h.push(d.have)
+    })
+    let setting = {
+      "haveColumn": this.haveColumn,
+      "have": h
+    }
+    localStorage.setItem('setting', JSON.stringify(setting))
+
+  }
   showMore() {
     this.limiter += 24;
   }
@@ -111,6 +123,7 @@ export class AppComponent {
       else
         return this.sum(a) - this.sum(b);
     })
+    this.saveToLocalStorage()
   }
 
   async change(scrips:number):Promise<any[]> {
